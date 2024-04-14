@@ -7,10 +7,13 @@ import (
 	"scheduler-service/repo"
 )
 
-var mongoStore *repo.MongoStore // Use a store, not just the client
-var cfg = config.New()
+var mongoStore *repo.MongoStore
 
-func DbInit() {
+type initializedConfigs struct {
+	MongoStore *repo.MongoStore
+}
+
+func DbInit(cfg *config.Config) *initializedConfigs {
 	var err error
 	mongoStore, err = repo.NewClient(cfg.MongoURI) // Assign to global variable
 	if err != nil {
@@ -23,4 +26,5 @@ func DbInit() {
 	}
 
 	log.Println("Connected to Mongo!")
+	return &initializedConfigs{MongoStore: mongoStore}
 }

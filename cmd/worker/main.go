@@ -2,13 +2,13 @@ package main
 
 import (
 	"fmt"
-	"scheduler-service/cmd/initializer"
+	"scheduler-service/config"
 )
 
-func main() {
-	fmt.Println("Started Worker Service")
-}
+var cfg *config.Config
 
-func init() {
-	initializer.DbInit()
+func main() {
+	cfg = config.New()
+	//initalizedConfigs := initializer.DbInit(cfg)
+	fmt.Println("Started Worker Service")
 }
