@@ -9,6 +9,7 @@ const (
 	OneTime    ExecutionType = "OneTime"
 	Recurrent  ExecutionType = "Recurrent"
 	Init       State         = "Init"
+	Queued     State         = "Queued"
 	InProgress State         = "InProgress"
 	Done       State         = "Done"
 	Failed     State         = "Failed"

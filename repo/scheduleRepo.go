@@ -50,6 +50,7 @@ func (store *MongoStore) ListSchedules() ([]model.Schedule, error) {
 
 func (store *MongoStore) AddSchedule(schedule model.Schedule) error {
 	collection := store.Client.Database("schedule-manager").Collection("schedules")
+	schedule.State = model.Init
 	_, err := collection.InsertOne(context.TODO(), schedule)
 	return err
 }
